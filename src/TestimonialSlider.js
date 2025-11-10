@@ -1,15 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Slider from 'react-slick';
-import './TestimonialSlider.css'; // We will update this
+import './TestimonialSlider.css';
 
 // Import slick-carousel styles
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Note: We are no longer using FaArrowLeft/Right, as the new buttons use inline SVGs
-// import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-
-// Placeholder data - (No change from your file)
+// Testimonial data
 const testimonials = [
   {
     id: 1,
@@ -17,7 +14,7 @@ const testimonials = [
     title: 'VP of Marketing, ClearlyRated',
     companyLogo: 'https://clinchit.io/images/ClearlyRated_Logo.svg',
     avatar: 'https://d3urjsb4t4pqwq.cloudfront.net/assets/Stephen_Banbury_Profile.jpg',
-    quote: 'A lot of tools give you insights. Clinch goes a step further—it executes actions across tools like Slack, Intercom, and HubSpot. It’s the closest thing I’ve seen to an AI teammate.'
+    quote: "A lot of tools give you insights. Clinch goes a step further—it executes actions across tools like Slack, Intercom, and HubSpot. It's the closest thing I've seen to an AI teammate."
   },
   {
     id: 2,
@@ -25,7 +22,7 @@ const testimonials = [
     title: 'CEO, ShiftCare',
     companyLogo: 'https://clinchit.io/images/ShiftCare_Logo.svg',
     avatar: 'https://d3urjsb4t4pqwq.cloudfront.net/assets/Mathew_Cagney_profile.jpg',
-    quote: 'With Clinch, our CS agents have gone from handling 5-15 calls per day to 30-40 calls per day. That’s a 2.5x boost in daily calls.'
+    quote: "With Clinch, our CS agents have gone from handling 5-15 calls per day to 30-40 calls per day. That's a 2.5x boost in daily calls."
   },
   {
     id: 3,
@@ -33,11 +30,11 @@ const testimonials = [
     title: 'Director of Partnerships, Venzi',
     companyLogo: 'https://clinchit.io/images/BreakAway_Data_Logo.svg',
     avatar: 'https://d3urjsb4t4pqwq.cloudfront.net/assets/Jory_Zemanek_Profile.jpg',
-    quote: 'Clinch generated emails increased our trial conversion rate by 30%... It\'s an essential tool for our growth.'
+    quote: "Clinch generated emails increased our trial conversion rate by 30%... It's an essential tool for our growth."
   }
 ];
 
-// --- New Progress Bar Logic ---
+// Progress bar constants
 const AUTOPLAY_DURATION = 5000; // 5 seconds
 const PROGRESS_INTERVAL = 50;   // 50ms refresh rate
 
@@ -47,12 +44,18 @@ const TestimonialSlider = () => {
   const intervalRef = useRef(null);
 
   const startProgress = () => {
-    clearInterval(intervalRef.current); // Clear any existing timer
+    // Clear any existing timer
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    
     intervalRef.current = setInterval(() => {
       setProgress(prev => {
         const newProgress = prev + (100 / (AUTOPLAY_DURATION / PROGRESS_INTERVAL));
         if (newProgress >= 100) {
-          clearInterval(intervalRef.current);
+          if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+          }
           return 100;
         }
         return newProgress;
@@ -62,8 +65,28 @@ const TestimonialSlider = () => {
 
   useEffect(() => {
     startProgress(); // Start on component mount
-    return () => clearInterval(intervalRef.current); // Cleanup on unmount
+    
+    // Cleanup on unmount
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
+
+  // new change
+  const handlePrev = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickPrev();
+    }
+  };
+
+  //new change
+  const handleNext = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickNext();
+    }
+  };
 
   const settings = {
     dots: false,
@@ -104,26 +127,27 @@ const TestimonialSlider = () => {
             ></div>
           </div>
           <div className="slider-nav">
-            <div className="nav-btn" onClick={() => sliderRef.current.slickPrev()}>
+            {/* Previous Button - NOW WITH PROPER NULL CHECK */}
+            <div className="nav-btn" onClick={handlePrev}>
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g opacity="0.2">
                   <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" fill="white"></path>
                   <path d="M15.8284 19.0009L21.1924 13.6369L19.7782 12.2227L12 20.0009L19.7782 27.779L21.1924 26.3648L15.8284 21.0009H28V19.0009H15.8284Z" fill="#09061E"></path>
                 </g>
-                {/* Active state (for hover) */}
                 <g className="nav-btn-active">
                   <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" fill="white"></path>
                   <path d="M15.8284 19.0009L21.1924 13.6369L19.7782 12.2227L12 20.0009L19.7782 27.779L21.1924 26.3648L15.8284 21.0009H28V19.0009H15.8284Z" fill="#09061E"></path>
                 </g>
               </svg>
             </div>
-            <div className="nav-btn" onClick={() => sliderRef.current.slickNext()}>
+            
+            {/* Next Button - NOW WITH PROPER NULL CHECK */}
+            <div className="nav-btn" onClick={handleNext}>
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g opacity="0.2">
                   <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" fill="white"></path>
                   <path d="M24.1716 19.0009L18.8076 13.6369L20.2218 12.2227L28 20.0009L20.2218 27.779L18.8076 26.3648L24.1716 21.0009H12V19.0009H24.1716Z" fill="#09061E"></path>
                 </g>
-                {/* Active state (for hover) */}
                 <g className="nav-btn-active">
                   <path d="M0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20Z" fill="white"></path>
                   <path d="M24.1716 19.0009L18.8076 13.6369L20.2218 12.2227L28 20.0009L20.2218 27.779L18.8076 26.3648L24.1716 21.0009H12V19.0009H24.1716Z" fill="#09061E"></path>
