@@ -6,13 +6,13 @@ import TestimonialSlider from './TestimonialSlider';
 import WinningTeams from './WinningTeam';
 
 // --- Import Icons ---
-import { 
-  FiAlertTriangle, FiTarget, FiBarChart2, 
+import {
+  FiAlertTriangle, FiTarget, FiBarChart2,
   FiLock, FiCheckCircle, FiStar, FiArrowRight,
   FiX // Added for mobile menu close button
 } from 'react-icons/fi';
-import { 
-  FaSlack, FaHubspot, FaSalesforce, FaLinkedin, FaTwitter 
+import {
+  FaSlack, FaHubspot, FaSalesforce, FaLinkedin, FaTwitter
 } from 'react-icons/fa';
 
 // --- Import Images ---
@@ -20,6 +20,7 @@ import {
 // Using placeholders for now
 import heroLaptop from './marketing_home_hero_image_V3.svg'; // Your existing SVG
 import clinchLogo from './logo.svg'; // Your existing logo
+import { Navigate, useNavigate } from 'react-router-dom';
 const clinchIcon = "https://clinchit.io/images/Clinch_Logo_Icon.svg";
 // This is the new logo from your snippet
 const clinchLogoFull = "https://clinchit.io/Clinch Logo.8c0a9e1d87f9a10c541f25c08d83cfd3.svg";
@@ -52,7 +53,7 @@ const featuresData = {
         text: '<strong>Increase Win Rates by 35% to 50%</strong> by walking into every conversation armed with the right context.',
       },
     ],
-    image: 'https://via.placeholder.com/600x450.png?text=Research+Product+Mockup',
+    image: 'https://d3urjsb4t4pqwq.cloudfront.net/assets/Research_Image_V4.svg',
   },
   assist: {
     title: 'Your AI Live Meeting Assistant',
@@ -90,11 +91,18 @@ const HomePage = () => {
   const [activeTab, setActiveTab] = useState('research');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // For mobile menu
   const activeFeature = featuresData[activeTab];
+  const navigate = useNavigate();
+  const handleClick = () => {
+
+    navigate('/login');
+
+  }
+
 
   return (
     <div className="homepage-wrapper">
       <header className="new-header scrollHeaderGradient">
-        
+
         {/* Desktop Nav */}
         <div className="desktop-nav">
           <div className="col-span-1">
@@ -105,14 +113,14 @@ const HomePage = () => {
             </a>
           </div>
           <div className="col-span-4 nav-links-container">
-            
+
             <div className="nav-item group">
               <a className="nav-link" href="/customers">Customers</a>
             </div>
-            
+
             <div className="nav-item group has-dropdown">
               <div className="nav-link-dropdown">
-                Resources 
+                Resources
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="nav-dropdown-arrow">
                   <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd"></path>
                 </svg>
@@ -129,7 +137,7 @@ const HomePage = () => {
 
             <div className="nav-item group has-dropdown">
               <div className="nav-link-dropdown">
-                Company 
+                Company
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="nav-dropdown-arrow">
                   <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd"></path>
                 </svg>
@@ -142,8 +150,10 @@ const HomePage = () => {
           </div>
           <div className="col-span-1"></div>
           <div className="col-span-4 auth-buttons-container">
-            <div className="nav-login-btn">Log In</div>
-            
+            <div> <button className='try-free-text' onClick={handleClick}>Log In</button>
+            <div className="try-free-border"></div>
+            </div>
+
             <div className="try-free-button">
               <div className="try-free-text">Try Free</div>
               <div className="try-free-border"></div>
@@ -154,7 +164,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Mobile Nav */}
         <div className="mobile-nav">
           <div className="col-span-2">
@@ -214,8 +224,8 @@ const HomePage = () => {
 
       {/* 2. Hero Section */}
       <section className="hero">
-      {/* ... rest of your hero section ... */}
-      {/* Background Orb Image */}
+        {/* ... rest of your hero section ... */}
+        {/* Background Orb Image */}
         <img src={heroBgOrb} alt="Background" className="hero-bg-orb" />
 
         <div className="container hero-container">
@@ -232,7 +242,7 @@ const HomePage = () => {
 
           {/* Right Visual Flow */}
           <div className="hero-visual">
-            
+
             <img src={heroLaptop} alt="Clinch Platform" className="hero-laptop-img" />
           </div>
         </div>
@@ -240,7 +250,7 @@ const HomePage = () => {
 
       {/* 3. Logo Marquee */}
       <section className="logo-marquee-section">
-      {/* ... existing code ... */}
+        {/* ... existing code ... */}
         <h3>Trusted by the high-performing Teams</h3>
         <div className="marquee-container">
           <div className="marquee-content">
@@ -259,7 +269,7 @@ const HomePage = () => {
 
       {/* 4. "Walk In Prepared" Tabbed Feature Section */}
       <section className="features-section">
-      {/* ... existing code ... */}
+        {/* ... existing code ... */}
         <div className="container">
           <div className="tabs-nav">
             <button
@@ -312,28 +322,28 @@ const HomePage = () => {
 
       {/* 5. "How Clinch Works" Section (NEW) */}
       <section className="how-it-works" style={{ backgroundImage: `url(${howItWorksBg})` }}>
-      {/* ... existing code ... */}
+        {/* ... existing code ... */}
         <div className="container">
           <h2>How Clinch Works</h2>
           <div className="how-grid">
             {/* Step 1 */}
             <div className="how-step">
               <h3>1. Sign Up</h3>
-              <img src={signUpImage} alt="Sign Up" />
+              <img src={"https://d3urjsb4t4pqwq.cloudfront.net/assets/marketing_home_sign_up.svg"} alt="Sign Up" />
             </div>
             {/* Step 2 */}
             <div className="how-step">
               <h3>2. Connect Your Stack</h3>
-              <img src={connectStackImage} alt="Connect Your Stack" />
+              <img src={"https://d3urjsb4t4pqwq.cloudfront.net/assets/marketing_home_connect_slack.svg"} alt="Connect Your Stack" />
             </div>
             {/* Step 3 */}
             <div className="how-step">
               <h3>3. Let Clinch Automate Gruntwork</h3>
-              <img src={automateImage} alt="Automate Gruntwork" />
+              <img src={"https://d3urjsb4t4pqwq.cloudfront.net/assets/marketing_home_clinch_automate.svg"} alt="Automate Gruntwork" />
             </div>
           </div>
           <div className="how-cta">
-            <p>More selling time. Less tool thrashing.<br/>Faster ramp. Happier reps.</p>
+            <p>More selling time. Less tool thrashing.<br />Faster ramp. Happier reps.</p>
             <button className="btn btn-primary">Request a Demo</button>
           </div>
         </div>
@@ -344,10 +354,10 @@ const HomePage = () => {
 
       {/* 7. Testimonial Slider (NEW) */}
       <TestimonialSlider />
-      
+
       {/* 8. Security Section (Redesigned) */}
       <section className="security-section">
-      {/* ... existing code ... */}
+        {/* ... existing code ... */}
         <div className="container">
           <div className="security-card-glass">
             <div className="security-content">
@@ -355,23 +365,24 @@ const HomePage = () => {
               <p>Clinch AGI is certified by the highest industry standards to protect your data.</p>
               <button className="btn btn-secondary">See Certification</button>
             </div>
-            <div className="security-logos">
-              <img src={gdprLogo} alt="GDPR" />
-              <img src={ccpaLogo} alt="CCPA" />
-              <img src={isoLogo} alt="ISO" />
-              <img src={socLogo} alt="SOC 2 Type 2" />
+            <div className="security-logos flex items-center justify-center gap-4">
+              <img src="/gdpr.png" alt="GDPR" className="w-16 h-auto" />
+              <img src="/ccpa.png" alt="CCPA" className="w-16 h-auto" />
+              <img src="/ISO.png" alt="ISO" className="w-16 h-auto" />
+              <img src="/soc.png" alt="SOC 2 Type 2" className="w-16 h-auto" />
             </div>
+
           </div>
         </div>
       </section>
 
       {/* 9. Footer (Redesigned) */}
       <footer className="footer">
-      {/* ... existing code ... */}
+        {/* ... existing code ... */}
         <div className="container footer-container">
           <div className="footer-column brand-column">
             <a href="/" className="logo-link">
-              <img src={clinchIcon} alt="Clinch AGI" className="logo-icon" />
+              <img src={"https://clinchit.io./Clinch-logo-footer.3089885c9863f10fdbc17efc47ff2f03.svg"} alt="Clinch AGI" className="logo-icon" />
             </a>
             <p>&copy; {new Date().getFullYear()} Clinch, Inc. All rights reserved.</p>
             <div className="social-icons">
