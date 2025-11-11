@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './HomePage.css';
 import TestimonialSlider from './TestimonialSlider';
 import WinningTeams from './WinningTeam';
+import { useEffect } from 'react';
 import {
   FiAlertTriangle, FiTarget, FiBarChart2,
   FiCheckCircle, FiStar,
@@ -82,6 +83,25 @@ const HomePage = () => {
     navigate('/login');
 
   }
+
+   useEffect(() => {
+    if (window.SN_CSM_EC) return; // already loaded
+  
+    const script = document.createElement("script");
+    script.src =
+      "https://demoalectriallwfzu128581.service-now.com/scripts/sn_csm_ec.js?v=5.6";
+    script.async = true;
+    script.onload = () => {
+      if (window.SN_CSM_EC) {
+        window.SN_CSM_EC.init({
+          moduleID:
+            "https://demoalectriallwfzu128581.service-now.com/#096b1eaa2f8d7290cd929a3bcfa4e3cb",
+          loadFeature: window.SN_CSM_EC.loadEMFeature(),
+        });
+      }
+    };
+    document.body.appendChild(script);
+  }, []);
 
 
   return (
