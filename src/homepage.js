@@ -1,41 +1,26 @@
 import React, { useState } from 'react';
-import './HomePage.css'; // This will be completely rewritten
-
-// --- Import New Components ---
+import './HomePage.css';
 import TestimonialSlider from './TestimonialSlider';
 import WinningTeams from './WinningTeam';
-
-// --- Import Icons ---
 import {
   FiAlertTriangle, FiTarget, FiBarChart2,
-  FiLock, FiCheckCircle, FiStar, FiArrowRight,
-  FiX // Added for mobile menu close button
+  FiCheckCircle, FiStar,
+  FiX 
 } from 'react-icons/fi';
 import {
-  FaSlack, FaHubspot, FaSalesforce, FaLinkedin, FaTwitter
+  FaLinkedin, FaTwitter
 } from 'react-icons/fa';
 
-// --- Import Images ---
-// We assume these are in `public` or `src`
-// Using placeholders for now
-import heroLaptop from './marketing_home_hero_image_V3.svg'; // Your existing SVG
-import clinchLogo from './logo.svg'; // Your existing logo
-import { Navigate, useNavigate } from 'react-router-dom';
-const clinchIcon = "https://clinchit.io/images/Clinch_Logo_Icon.svg";
-// This is the new logo from your snippet
+
+import heroLaptop from './marketing_home_hero_image_V3.svg';
+
+import { useNavigate } from 'react-router-dom';
+
 const clinchLogoFull = "https://clinchit.io/Clinch Logo.8c0a9e1d87f9a10c541f25c08d83cfd3.svg";
 const heroBgOrb = "https://clinchit.io/images/UeN8DRPyDg7p.png";
 const howItWorksBg = "https://clinchit.io/images/how_it_works.svg";
-const signUpImage = "https://clinchit.io/images/1_Sign_Up.svg";
-const connectStackImage = "https://clinchit.io/images/2_Connect_your_Stack.svg";
-const automateImage = "https://clinchit.io/images/3_Let_Clinch_Automate_Gruntwork.svg";
-const gdprLogo = "https://clinchit.io/images/GDPR.svg";
-const ccpaLogo = "https://clinchit.io/images/CCPA.svg";
-const isoLogo = "https://clinchit.io/images/ISO.svg";
-const socLogo = "https://clinchit.io/images/SOC_2_Type_2.svg";
 
 
-// Data for the dynamic feature tabs (no change)
 const featuresData = {
   research: {
     title: 'Walk In Prepared — Every Time',
@@ -151,7 +136,7 @@ const HomePage = () => {
           <div className="col-span-1"></div>
           <div className="col-span-4 auth-buttons-container">
             <div> <button className='try-free-text' onClick={handleClick}>Log In</button>
-            <div className="try-free-border"></div>
+              <div className="try-free-border"></div>
             </div>
 
             <div className="try-free-button">
@@ -165,7 +150,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Mobile Nav */}
+
         <div className="mobile-nav">
           <div className="col-span-2">
             <a href="/" className="mobile-logo-link">
@@ -184,7 +169,6 @@ const HomePage = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Dialog */}
       {mobileMenuOpen && (
         <div className="mobile-menu-dialog">
           <div className="mobile-menu-backdrop" onClick={() => setMobileMenuOpen(false)}></div>
@@ -221,15 +205,10 @@ const HomePage = () => {
           </div>
         </div>
       )}
-
-      {/* 2. Hero Section */}
       <section className="hero">
-        {/* ... rest of your hero section ... */}
-        {/* Background Orb Image */}
         <img src={heroBgOrb} alt="Background" className="hero-bg-orb" />
 
         <div className="container hero-container">
-          {/* Left Content */}
           <div className="hero-content">
             <div className="g2-badge">
               <FiStar /> <FiStar /> <FiStar /> <FiStar /> <FiStar />
@@ -240,7 +219,6 @@ const HomePage = () => {
             <button className="btn btn-primary btn-large">Request Demo</button>
           </div>
 
-          {/* Right Visual Flow */}
           <div className="hero-visual">
 
             <img src={heroLaptop} alt="Clinch Platform" className="hero-laptop-img" />
@@ -248,13 +226,10 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 3. Logo Marquee */}
       <section className="logo-marquee-section">
-        {/* ... existing code ... */}
         <h3>Trusted by the high-performing Teams</h3>
         <div className="marquee-container">
           <div className="marquee-content">
-            {/* These are text, but styled to look like the logos */}
             <span className="logo-item venzi">venzi</span>
             <span className="logo-item shiftcare">ShiftCare</span>
             <span className="logo-item clearlyrated">clearlyrated</span>
@@ -267,9 +242,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 4. "Walk In Prepared" Tabbed Feature Section */}
       <section className="features-section">
-        {/* ... existing code ... */}
         <div className="container">
           <div className="tabs-nav">
             <button
@@ -312,7 +285,6 @@ const HomePage = () => {
             </div>
             <div className="tab-visual">
               <div className="product-mockup">
-                {/* Placeholder image, but in the correct frame */}
                 <img src={featuresData[activeTab].image} alt={activeFeature.title} />
               </div>
             </div>
@@ -331,12 +303,12 @@ const HomePage = () => {
               <h3>1. Sign Up</h3>
               <img src={"https://d3urjsb4t4pqwq.cloudfront.net/assets/marketing_home_sign_up.svg"} alt="Sign Up" />
             </div>
-            {/* Step 2 */}
+          
             <div className="how-step">
               <h3>2. Connect Your Stack</h3>
               <img src={"https://d3urjsb4t4pqwq.cloudfront.net/assets/marketing_home_connect_slack.svg"} alt="Connect Your Stack" />
             </div>
-            {/* Step 3 */}
+       
             <div className="how-step">
               <h3>3. Let Clinch Automate Gruntwork</h3>
               <img src={"https://d3urjsb4t4pqwq.cloudfront.net/assets/marketing_home_clinch_automate.svg"} alt="Automate Gruntwork" />
@@ -349,15 +321,11 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 6. "Winning Teams" Flip Cards (NEW) */}
       <WinningTeams />
 
-      {/* 7. Testimonial Slider (NEW) */}
       <TestimonialSlider />
 
-      {/* 8. Security Section (Redesigned) */}
       <section className="security-section">
-        {/* ... existing code ... */}
         <div className="container">
           <div className="security-card-glass">
             <div className="security-content">
