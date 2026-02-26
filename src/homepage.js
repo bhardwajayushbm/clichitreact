@@ -69,7 +69,7 @@ const divisions = [
 
 
 const HomePage = () => {
-  const [ setActiveTab] = useState('research');
+ 
 
 
   useEffect(() => {
