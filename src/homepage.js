@@ -1,68 +1,12 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './HomePage.css';
 import { useEffect } from 'react';
-import {
-  FiAlertTriangle, FiTarget, FiBarChart2,
-  FiCheckCircle,
-} from 'react-icons/fi';
 
 
-import { useNavigate } from 'react-router-dom';
 
 const clinchLogoFull = "https://static.wixstatic.com/media/b3f9bc_9064d42793e349b2852edee5defdb48a~mv2.png/v1/fill/w_450,h_114,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Metro%20Elevator%20Logo_white.png";
 const heroBgOrb = "https://clinchit.io/images/UeN8DRPyDg7p.png";
 
-
-const featuresData = {
-  research: {
-    title: 'Walk In Prepared — Every Time',
-    points: [
-      {
-        icon: <FiAlertTriangle className="point-icon" />,
-        text: '<strong>20% of a rep’s time</strong> is wasted digging through emails, call notes, LinkedIn, and web pages.',
-      },
-      {
-        icon: <FiTarget className="point-icon" />,
-        text: 'Get real-time insights on buyers, accounts, pain points, and opportunity signals—so your team can engage with precision.',
-      },
-      {
-        icon: <FiBarChart2 className="point-icon" />,
-        text: '<strong>Increase Win Rates by 35% to 50%</strong> by walking into every conversation armed with the right context.',
-      },
-    ],
-    image: 'https://d3urjsb4t4pqwq.cloudfront.net/assets/Research_Image_V4.svg',
-  },
-  assist: {
-    title: 'Your AI Live Meeting Assistant',
-    points: [
-      {
-        icon: <FiCheckCircle className="point-icon" />,
-        text: 'Real-time battle cards and objection handling, delivered to you live as the prospect speaks.',
-      },
-    ],
-    image: 'https://via.placeholder.com/600x450.png?text=Live+Assist+Mockup',
-  },
-  intelligence: {
-    title: 'Unlock Conversational Intelligence',
-    points: [
-      {
-        icon: <FiCheckCircle className="point-icon" />,
-        text: 'Transcribe and analyze 100% of your customer conversations to find out what *really* works.',
-      },
-    ],
-    image: 'https://via.placeholder.com/600x450.png?text=Intelligence+Mockup',
-  },
-  actions: {
-    title: 'Execute Actions Automatically',
-    points: [
-      {
-        icon: <FiCheckCircle className="point-icon" />,
-        text: 'Automate post-call summaries, CRM updates, and follow-up email drafts instantly.',
-      },
-    ],
-    image: 'https://via.placeholder.com/600x450.png?text=Actions+Mockup',
-  },
-};
 const services = [
   {
     label: 'MAINTENANCE\n& REPAIR',
