@@ -6,18 +6,13 @@ import { useEffect } from 'react';
 import {
   FiAlertTriangle, FiTarget, FiBarChart2,
   FiCheckCircle, FiStar,
-  FiX 
+  FiX
 } from 'react-icons/fi';
-import {
-  FaLinkedin, FaTwitter
-} from 'react-icons/fa';
 
-
-import heroLaptop from './marketing_home_hero_image_V3.svg';
 
 import { useNavigate } from 'react-router-dom';
 
-const clinchLogoFull = "https://clinchit.io/Clinch Logo.8c0a9e1d87f9a10c541f25c08d83cfd3.svg";
+const clinchLogoFull = "https://static.wixstatic.com/media/b3f9bc_9064d42793e349b2852edee5defdb48a~mv2.png/v1/fill/w_450,h_114,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Metro%20Elevator%20Logo_white.png";
 const heroBgOrb = "https://clinchit.io/images/UeN8DRPyDg7p.png";
 const howItWorksBg = "https://clinchit.io/images/how_it_works.svg";
 
@@ -72,6 +67,66 @@ const featuresData = {
     image: 'https://via.placeholder.com/600x450.png?text=Actions+Mockup',
   },
 };
+const services = [
+  {
+    label: 'MAINTENANCE\n& REPAIR',
+    img: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=500&q=80&fit=crop',
+    href: '/services#maintenance',
+  },
+  {
+    label: 'MODERNIZATION',
+    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80&fit=crop',
+    href: '/services#modernization',
+  },
+  {
+    label: 'NEW\nINSTALLATION',
+    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80&fit=crop',
+    href: '/construction',
+  },
+  {
+    label: 'INSPECTIONS &\nCOMPLIANCE',
+    img: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500&q=80&fit=crop',
+    href: '/services#inspection',
+  },
+]
+const reviews = [
+  {
+    name: '- BEN, BOSTON, MA',
+    text: "Metro Elevator has gone above expectations in completing our service contract. When old items fail, the team goes above and beyond explaining the issue and giving fair pricing for the repair. The crew is the best I have ever worked with.",
+  },
+  {
+    name: '- SHEILA, CHARLOTTE, NC',
+    text: "They are very professional and always communicated well with our team. We are happy with Metro's service and are slowly working at moving all our elevator service to Metro Elevator.",
+  },
+  {
+    name: '- JONATHAN, NEW YORK, NY',
+    text: "They were very professional; met all our requirements and quickly dealt with any issues that we had in a building with many challenges. They were very easy to get a hold of which is paramount in servicing our clients. They are now my go to company.",
+  },
+]
+const divisions = [
+  { label: 'NEW YORK METRO', href: '/newyork' },
+  { label: 'NEW ENGLAND', href: '/new-england' },
+  { label: 'VIRGINIA', href: '/virginia' },
+  { label: 'NORTHWEST', href: '/seattle' },
+  { label: 'NORCAL', href: '/san-francisco' },
+  { label: 'CAROLINAS', href: '/charlotte' },
+  { label: 'COASTAL CAROLINA', href: '/coastal-carolina' },
+  { label: 'TRIANGLE-TRIAD', href: '/raleigh' },
+  { label: 'TEXAS', href: '/dallas' },
+  { label: 'UTAH', href: '/utah' },
+  { label: 'IOWA', href: '/iowa' },
+  { label: 'FLORIDA', href: '/west-florida' },
+  { label: 'IDAHO', href: '/idaho' },
+  { label: 'NEW JERSEY', href: '/new-jersey' },
+  { label: 'KANSAS CITY', href: '/kansas-city' },
+  { label: 'NEBRASKA', href: '/nebraska' },
+  { label: 'WISCONSIN', href: '/wisconsin' },
+  { label: 'MICHIGAN', href: '/michigan' },
+  { label: 'PITTSBURGH', href: '/pittsburgh' },
+  { label: 'TENNESSEE', href: '/nashville-tn' },
+  { label: 'GEORGIA', href: '/georgia' },
+]
+
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('research');
@@ -80,22 +135,21 @@ const HomePage = () => {
   const navigate = useNavigate();
   const handleClick = () => {
 
-    navigate('/login');
 
   }
 
-   useEffect(() => {
+  useEffect(() => {
     if (window.SN_CSM_EC) return; // already loaded
-  
+
     const script = document.createElement("script");
     script.src =
-      "https://demoalectriallwfzu128581.service-now.com/scripts/sn_csm_ec.js?v=5.6";
+      "https://bangmetricllcdemo2.service-now.com/scripts/sn_csm_ec.js?v=5.6";
     script.async = true;
     script.onload = () => {
       if (window.SN_CSM_EC) {
         window.SN_CSM_EC.init({
           moduleID:
-            "https://demoalectriallwfzu128581.service-now.com/#096b1eaa2f8d7290cd929a3bcfa4e3cb",
+           "https://bangmetricllcdemo2.service-now.com/#f82c9aa90f977210a3a6c1e800d1b22b",
           loadFeature: window.SN_CSM_EC.loadEMFeature(),
         });
       }
@@ -120,291 +174,604 @@ const HomePage = () => {
           <div className="col-span-4 nav-links-container">
 
             <div className="nav-item group">
-              <a className="nav-link" href="/customers">Customers</a>
+              <a className="nav-link" href="/customers">About</a>
             </div>
 
             <div className="nav-item group has-dropdown">
               <div className="nav-link-dropdown">
-                Resources
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="nav-dropdown-arrow">
-                  <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd"></path>
-                </svg>
-              </div>
-              <div className="dropdown-content">
-                <a href="#blog">Blog</a>
-                <a href="#case-studies">Case Studies</a>
+                Services
               </div>
             </div>
 
             <div className="nav-item group">
-              <a className="nav-link" href="/pricing">Pricing</a>
+              <a className="nav-link" href="/pricing">Division</a>
             </div>
 
-            <div className="nav-item group has-dropdown">
-              <div className="nav-link-dropdown">
-                Company
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="nav-dropdown-arrow">
-                  <path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd"></path>
-                </svg>
-              </div>
-              <div className="dropdown-content">
-                <a href="#about">About Us</a>
-                <a href="#careers">Careers</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-1"></div>
-          <div className="col-span-4 auth-buttons-container">
-            <div> <button className='try-free-text' onClick={handleClick}>Log In</button>
-              <div className="try-free-border"></div>
+            <div className="nav-item group">
+              <a className="nav-link" href="/pricing">Blog</a>
             </div>
 
-            <div className="try-free-button">
-              <div className="try-free-text">Try Free</div>
-              <div className="try-free-border"></div>
+            <div className="nav-item group">
+              <a className="nav-link" href="/pricing">ContactUs</a>
             </div>
-
-            <div className="bookDemo">
-              <a href="/request-demo">Request Demo</a>
-            </div>
-          </div>
-        </div>
-
-
-        <div className="mobile-nav">
-          <div className="col-span-2">
-            <a href="/" className="mobile-logo-link">
-              <span className="sr-only">ClinchIt</span>
-              <img className="mobile-logo-img" src={clinchLogoFull} alt="clinchit logo" />
-            </a>
-          </div>
-          <div className="mobile-menu-button-wrapper">
-            <button type="button" className="mobile-menu-button" onClick={() => setMobileMenuOpen(true)}>
-              <span className="sr-only">Open main menu</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" className="mobile-menu-icon">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-              </svg>
-            </button>
           </div>
         </div>
       </header>
-
-      {mobileMenuOpen && (
-        <div className="mobile-menu-dialog">
-          <div className="mobile-menu-backdrop" onClick={() => setMobileMenuOpen(false)}></div>
-          <div className="mobile-menu-panel">
-            <div className="mobile-menu-header">
-              <a href="/" className="mobile-logo-link">
-                <span className="sr-only">ClinchIt</span>
-                <img className="mobile-logo-img" src={clinchLogoFull} alt="clinchit logo" />
-              </a>
-              <button type="button" className="mobile-menu-button" onClick={() => setMobileMenuOpen(false)}>
-                <span className="sr-only">Close menu</span>
-                <FiX className="mobile-menu-icon" />
-              </button>
-            </div>
-            <div className="mobile-menu-content">
-              <a href="/customers" className="mobile-nav-link">Customers</a>
-              <a href="/pricing" className="mobile-nav-link">Pricing</a>
-              <div className="mobile-nav-group">
-                <p className="mobile-nav-heading">Resources</p>
-                <a href="#blog" className="mobile-nav-sublink">Blog</a>
-                <a href="#case-studies" className="mobile-nav-sublink">Case Studies</a>
-              </div>
-              <div className="mobile-nav-group">
-                <p className="mobile-nav-heading">Company</p>
-                <a href="#about" className="mobile-nav-sublink">About Us</a>
-                <a href="#careers" className="mobile-nav-sublink">Careers</a>
-              </div>
-            </div>
-            <div className="mobile-menu-footer">
-              <a href="#login" className="btn btn-secondary">Log In</a>
-              <a href="#try" className="btn btn-tertiary">Try Free</a>
-              <a href="/request-demo" className="btn btn-primary">Request Demo</a>
-            </div>
-          </div>
-        </div>
-      )}
       <section className="hero">
         <img src={heroBgOrb} alt="Background" className="hero-bg-orb" />
 
-        <div className="container hero-container">
-          <div className="hero-content">
-            <div className="g2-badge">
-              <FiStar /> <FiStar /> <FiStar /> <FiStar /> <FiStar />
-              <span>5.0 stars G2.com</span>
-            </div>
-            <h1>The First Agentic AE Operating System That Drives Revenue</h1>
-            <p>From CRM chaos to closed-won. Clinch lifts win rates with every rep — automatically.</p>
-            <button className="btn btn-primary btn-large">Request Demo</button>
-          </div>
-
-          <div className="hero-visual">
-
-            <img src={heroLaptop} alt="Clinch Platform" className="hero-laptop-img" />
-          </div>
+        <div className="hero-video-wrapper">
+          <video
+            src="https://video.wixstatic.com/video/b3f9bc_7240ba2a2735445c87cd5456c01be5c2/1080p/mp4/file.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="hero-video"
+          />
         </div>
       </section>
+      <section className="about-metro-section">
+  <div className="about-metro-container">
+    
+    {/* Left Image */}
+    <div className="about-metro-image">
+      <img
+        src="https://static.wixstatic.com/media/b3f9bc_714eae7e1f0a4d9fa9ed5ab64bf18561~mv2.jpg/v1/fill/w_735,h_899,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/b3f9bc_714eae7e1f0a4d9fa9ed5ab64bf18561~mv2.jpg"
+        alt="Metro Elevator Technician"
+      />
+    </div>
 
-      <section className="logo-marquee-section">
-        <h3>Trusted by the high-performing Teams</h3>
-        <div className="marquee-container">
-          <div className="marquee-content">
-            <span className="logo-item venzi">venzi</span>
-            <span className="logo-item shiftcare">ShiftCare</span>
-            <span className="logo-item clearlyrated">clearlyrated</span>
-            <span className="logo-item kc">K/C</span>
-            <span className="logo-item venzi">venzi</span>
-            <span className="logo-item shiftcare">ShiftCare</span>
-            <span className="logo-item clearlyrated">clearlyrated</span>
-            <span className="logo-item kc">K/C</span>
-          </div>
+    {/* Right Content */}
+    <div className="about-metro-content">
+      <h2>
+        With Metro Elevator, you’re not just another contract but an essential
+        part of our community of long-term partners.
+      </h2>
+
+      <div className="about-divider"></div>
+
+      <p>
+        For nearly 40 years, Metro Elevator has been an independent,
+        American-owned company that has garnered numerous awards for its
+        outstanding performance in the elevator industry.
+      </p>
+
+      <p>
+        We employ industry-leading management staff and top-tier mechanics. Our
+        highly experienced elevator technicians have maintained, repaired,
+        modernized, and installed every type of elevator equipment on the
+        market. Whether it’s hydraulic, traction, machine-room-less,
+        commercial, or freight, Metro Elevator has the extensive knowledge and
+        expertise to handle your elevator project with precision and
+        excellence.
+      </p>
+
+      <button className="learn-more-btn">LEARN MORE</button>
+    </div>
+
+  </div>
+</section>
+<section style={{ background: '#ffffff', padding: '70px 24px' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+
+        {/* Heading */}
+        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+          <h2 style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 800,
+            fontSize: 'clamp(22px, 4vw, 32px)',
+            color: '#1B2E5E',
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            marginBottom: '10px',
+          }}>
+            OUR SERVICES
+          </h2>
+          {/* Red underline */}
+          <div style={{ width: '60px', height: '3px', background: '#C8102E', margin: '0 auto' }} />
         </div>
-      </section>
 
-      <section className="features-section">
-        <div className="container">
-          <div className="tabs-nav">
-            <button
-              className={`tab-btn ${activeTab === 'research' ? 'active' : ''}`}
-              onClick={() => setActiveTab('research')}
+        {/* Circle cards */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '40px',
+          flexWrap: 'wrap',
+        }}>
+          {services.map((svc) => (
+            <a
+              key={svc.href}
+              href={svc.href}
+              style={{
+                position: 'relative',
+                width: '210px',
+                height: '210px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                textDecoration: 'none',
+                flexShrink: 0,
+                transition: 'transform 0.3s',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             >
-              Research
-            </button>
-            <button
-              className={`tab-btn ${activeTab === 'assist' ? 'active' : ''}`}
-              onClick={() => setActiveTab('assist')}
-            >
-              Live Meeting Assist
-            </button>
-            <button
-              className={`tab-btn ${activeTab === 'intelligence' ? 'active' : ''}`}
-              onClick={() => setActiveTab('intelligence')}
-            >
-              Conversational Intelligence
-            </button>
-            <button
-              className={`tab-btn ${activeTab === 'actions' ? 'active' : ''}`}
-              onClick={() => setActiveTab('actions')}
-            >
-              Executes Actions
-            </button>
+              {/* Background image */}
+              <img
+                src={svc.img}
+                alt={svc.label}
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+                loading="lazy"
+              />
+              {/* Dark navy overlay */}
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'rgba(27, 46, 94, 0.72)',
+              }} />
+              {/* Label */}
+              <div style={{
+                position: 'relative',
+                zIndex: 2,
+                textAlign: 'center',
+                color: '#ffffff',
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 800,
+                fontSize: '15px',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                padding: '0 24px',
+                lineHeight: 1.35,
+                whiteSpace: 'pre-line',
+              }}>
+                {svc.label}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section style={{ background: '#1B2E5E' }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        display: 'flex',
+        minHeight: '520px',
+      }}>
+
+        {/* Left — Text */}
+        <div style={{
+          flex: '0 0 45%',
+          padding: '60px 50px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+        }}>
+
+          {/* Heading */}
+          <h2 style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 700,
+            fontSize: '22px',
+            color: '#ffffff',
+            lineHeight: 1.35,
+            marginBottom: '12px',
+          }}>
+            Nationwide presence with<br />local expertise
+          </h2>
+
+          {/* Red underline */}
+          <div style={{ width: '50px', height: '3px', background: '#C8102E', marginBottom: '26px' }} />
+
+          <p style={{
+            fontFamily: 'Open Sans, sans-serif',
+            fontSize: '14px',
+            color: 'rgba(255,255,255,0.9)',
+            lineHeight: 1.85,
+            marginBottom: '18px',
+          }}>
+            Each of our Divisions are locally owned and operated, ensuring the highest level of responsiveness and care for your elevator project.
+          </p>
+
+          <p style={{
+            fontFamily: 'Open Sans, sans-serif',
+            fontSize: '14px',
+            color: 'rgba(255,255,255,0.9)',
+            lineHeight: 1.85,
+            marginBottom: '18px',
+          }}>
+            Need assistance or have a question? Our local teams are here for you. Being in close proximity to our customers allows us to respond swiftly to your needs. We understand the importance of quick, reliable service, and our local ownership enables us to adapt promptly to changes and address your concerns with efficiency.
+          </p>
+
+          <p style={{
+            fontFamily: 'Open Sans, sans-serif',
+            fontSize: '14px',
+            color: 'rgba(255,255,255,0.9)',
+            lineHeight: 1.85,
+            marginBottom: '32px',
+          }}>
+            When you call, we answer - it's that simple.
+          </p>
+
+          {/* Red button — centered */}
+          <a
+            href="/divisions"
+            style={{
+              display: 'inline-block',
+              background: '#C8102E',
+              color: '#ffffff',
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 700,
+              fontSize: '12px',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              padding: '14px 24px',
+              textDecoration: 'none',
+              transition: 'background 0.2s',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.background = '#a30e25'}
+            onMouseLeave={(e) => e.currentTarget.style.background = '#C8102E'}
+          >
+            FIND A DIVISION NEAR YOU &gt;
+          </a>
+        </div>
+
+        {/* Right — YouTube + text, all on navy */}
+        <div style={{
+          flex: '0 0 55%',
+          padding: '50px 40px 50px 20px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+        }}>
+
+          {/* YouTube embed */}
+          <div style={{
+            width: '100%',
+            aspectRatio: '16/9',
+            marginBottom: '20px',
+            border: '1px solid rgba(255,255,255,0.15)',
+          }}>
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/0Uf0zSbxQh8"
+              title="Metro Elevator Coastal Carolina"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{ display: 'block' }}
+            />
           </div>
 
-          <div className="tab-content">
-            <div className="tab-text">
-              <h2>{activeFeature.title}</h2>
-              <ul>
-                {activeFeature.points.map((point, index) => (
-                  <li key={index}>
-                    {point.icon}
-                    <p dangerouslySetInnerHTML={{ __html: point.text }} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="tab-visual">
-              <div className="product-mockup">
-                <img src={featuresData[activeTab].image} alt={activeFeature.title} />
+          {/* Caption text on navy background */}
+          <p style={{
+            fontFamily: 'Open Sans, sans-serif',
+            fontSize: '13px',
+            color: 'rgba(255,255,255,0.85)',
+            lineHeight: 1.75,
+          }}>
+            <a href="/coastal-carolina" style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'underline' }}>
+              Metro Elevator Coastal Carolina
+            </a>{' '}
+            services elevators on the entire coastal region of South Carolina from Myrtle Beach all the way down to Savannah, Georgia. We understand the importance of reliable elevators in these challenging environments. From hurricane season to corrosive effects of salty air, our creative and solutions-oriented team is dedicated to ensuring the safety and efficiency of your elevators.{' '}
+            <a href="/contact-us" style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'underline' }}>Contact</a>{' '}
+            our Metro Elevator Coastal Carolina team today for more information.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section style={{ background: '#1B2E5E', padding: '70px 24px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+
+        {/* Heading */}
+        <h2 style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 900,
+          fontSize: 'clamp(26px, 5vw, 56px)',
+          color: '#ffffff',
+          textTransform: 'uppercase',
+          letterSpacing: '0.06em',
+          textAlign: 'center',
+          marginBottom: '50px',
+        }}>
+          WHAT OUR CUSTOMERS SAY
+        </h2>
+
+        {/* 3 cards */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '24px',
+        }}
+        className="review-grid"
+        >
+          {reviews.map((review) => (
+            <div
+              key={review.name}
+              style={{
+                background: 'linear-gradient(145deg, #b8b8b8 0%, #e0e0e0 20%, #c8c8c8 40%, #eeeeee 60%, #c4c4c4 80%, #d8d8d8 100%)',
+                padding: '36px 30px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                minHeight: '300px',
+              }}
+            >
+              {/* Name */}
+              <div style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 700,
+                fontSize: '14px',
+                color: '#1B2E5E',
+                letterSpacing: '0.08em',
+                marginBottom: '20px',
+              }}>
+                {review.name}
+              </div>
+
+              {/* Review text */}
+              <p style={{
+                fontFamily: 'Open Sans, sans-serif',
+                fontSize: '14px',
+                color: '#1B2E5E',
+                lineHeight: 1.75,
+                textAlign: 'center',
+                flex: 1,
+              }}>
+                {review.text}
+              </p>
+
+              {/* Closing quote */}
+              <div style={{
+                textAlign: 'center',
+                marginTop: '20px',
+              }}>
+                <span style={{
+                  fontFamily: 'Georgia, serif',
+                  fontSize: '48px',
+                  color: '#1B2E5E',
+                  lineHeight: 1,
+                  display: 'block',
+                }}>
+                  &#8221;
+                </span>
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </div>
 
-      {/* 5. "How Clinch Works" Section (NEW) */}
-      <section className="how-it-works" style={{ backgroundImage: `url(${howItWorksBg})` }}>
-        {/* ... existing code ... */}
-        <div className="container">
-          <h2>How Clinch Works</h2>
-          <div className="how-grid">
-            {/* Step 1 */}
-            <div className="how-step">
-              <h3>1. Sign Up</h3>
-              <img src={"https://d3urjsb4t4pqwq.cloudfront.net/assets/marketing_home_sign_up.svg"} alt="Sign Up" />
-            </div>
-          
-            <div className="how-step">
-              <h3>2. Connect Your Stack</h3>
-              <img src={"https://d3urjsb4t4pqwq.cloudfront.net/assets/marketing_home_connect_slack.svg"} alt="Connect Your Stack" />
-            </div>
-       
-            <div className="how-step">
-              <h3>3. Let Clinch Automate Gruntwork</h3>
-              <img src={"https://d3urjsb4t4pqwq.cloudfront.net/assets/marketing_home_clinch_automate.svg"} alt="Automate Gruntwork" />
-            </div>
-          </div>
-          <div className="how-cta">
-            <p>More selling time. Less tool thrashing.<br />Faster ramp. Happier reps.</p>
-            <button className="btn btn-primary">Request a Demo</button>
-          </div>
-        </div>
-      </section>
+      <style>{`
+        @media (max-width: 768px) {
+          .review-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+    </section>
+     <section style={{ background: '#ffffff', padding: '70px 24px 50px' }}>
+      <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
 
-      <WinningTeams />
+        {/* Heading */}
+        <h2 style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 800,
+          fontSize: 'clamp(18px, 3.5vw, 28px)',
+          color: '#1B2E5E',
+          textTransform: 'uppercase',
+          letterSpacing: '0.08em',
+          marginBottom: '10px',
+        }}>
+          PROVIDING ELEVATOR SERVICE NATIONWIDE
+        </h2>
 
-      <TestimonialSlider />
+        {/* Red underline */}
+        <div style={{ width: '60px', height: '3px', background: '#C8102E', margin: '0 auto 40px' }} />
 
-      <section className="security-section">
-        <div className="container">
-          <div className="security-card-glass">
-            <div className="security-content">
-              <h3>Enterprise Level Security.</h3>
-              <p>Clinch AGI is certified by the highest industry standards to protect your data.</p>
-              <button className="btn btn-secondary">See Certification</button>
-            </div>
-            <div className="security-logos flex items-center justify-center gap-4">
-              <img src="/gdpr.png" alt="GDPR" className="w-16 h-auto" />
-              <img src="/ccpa.png" alt="CCPA" className="w-16 h-auto" />
-              <img src="/ISO.png" alt="ISO" className="w-16 h-auto" />
-              <img src="/soc.png" alt="SOC 2 Type 2" className="w-16 h-auto" />
-            </div>
+        {/* Actual map image asset */}
+        <img
+          src="/7.avif"
+          alt="Metro Elevator Nationwide Service Map"
+          style={{
+            width: '100%',
+            maxWidth: '760px',
+            height: 'auto',
+            display: 'block',
+            margin: '0 auto',
+          }}
+        />
 
-          </div>
-        </div>
-      </section>
+      </div>
+    </section>
+    <section style={{ background: '#ffffff', padding: '0 24px 80px' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
 
-      {/* 9. Footer (Redesigned) */}
-      <footer className="footer">
-        {/* ... existing code ... */}
-        <div className="container footer-container">
-          <div className="footer-column brand-column">
-            <a href="/" className="logo-link">
-              <img src={"https://clinchit.io./Clinch-logo-footer.3089885c9863f10fdbc17efc47ff2f03.svg"} alt="Clinch AGI" className="logo-icon" />
+        {/* Heading — appears only here, NOT in MapSection */}
+        <h2 style={{
+          fontFamily: 'Montserrat, sans-serif',
+          fontWeight: 800,
+          fontSize: 'clamp(14px, 2.2vw, 20px)',
+          color: '#1B2E5E',
+          textTransform: 'uppercase',
+          letterSpacing: '0.06em',
+          marginBottom: '20px',
+          lineHeight: 1.4,
+        }}>
+          CONTACT ONE OF OUR LOCAL DIVISIONS FOR MORE INFORMATION
+        </h2>
+
+        {/* Body text */}
+        <p style={{
+          fontFamily: 'Open Sans, sans-serif',
+          fontSize: '15px',
+          color: '#1B2E5E',
+          lineHeight: 1.85,
+          maxWidth: '700px',
+          margin: '0 auto 36px',
+        }}>
+          As the most trusted and reliable elevator servicing company, Metro Elevator provides elevator installation, repair, and maintenance services to clients across the United States through our local divisions. For further information and a complimentary consultation, contact one of our divisions today.
+        </p>
+
+        {/* Division buttons — 4 columns */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '8px',
+          marginBottom: '36px',
+        }}>
+          {divisions.map((div) => (
+            <a
+              key={div.label}
+              href={div.href}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                background: '#1B2E5E',
+                color: '#ffffff',
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: 700,
+                fontSize: '11.5px',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                padding: '14px 14px',
+                textDecoration: 'none',
+                transition: 'background 0.2s',
+                lineHeight: 1.2,
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = '#243F7A'}
+              onMouseLeave={(e) => e.currentTarget.style.background = '#1B2E5E'}
+            >
+              <span>{div.label}</span>
+              <span style={{ marginLeft: '6px', opacity: 0.8, fontSize: '15px', flexShrink: 0 }}>›</span>
             </a>
-            <p>&copy; {new Date().getFullYear()} Clinch, Inc. All rights reserved.</p>
-            <div className="social-icons">
-              <a href="#linkedin" aria-label="LinkedIn"><FaLinkedin /></a>
-              <a href="#twitter" aria-label="Twitter"><FaTwitter /></a>
-            </div>
-          </div>
-          <div className="footer-column links-column">
-            <h4>Explore</h4>
-            <ul>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#customers">Customers</a></li>
-              <li><a href="#help">Help Center</a></li>
-            </ul>
-          </div>
-          <div className="footer-column links-column">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="#contact">Contact Us</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-            </ul>
-          </div>
-          <div className="footer-column links-column">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#terms">Terms</a></li>
-              <li><a href="#privacy">Privacy</a></li>
-              <li><a href="#cookie">Cookie Policy</a></li>
-              <li><a href="#data">Data Processing</a></li>
-            </ul>
-          </div>
+          ))}
         </div>
-      </footer>
+
+        {/* Footer note with email */}
+        <p style={{
+          fontFamily: 'Open Sans, sans-serif',
+          fontSize: '14px',
+          color: '#1B2E5E',
+          lineHeight: 1.75,
+        }}>
+          If you're interested in partnering with Metro Elevator but do not see your area listed, contact us at{' '}
+          <a
+            href="mailto:info@metro-elevator.com"
+            style={{ color: '#1B2E5E', textDecoration: 'underline' }}
+          >
+            info@metro-elevator.com
+          </a>
+          {' '}and we'll connect you with the appropriate office.
+        </p>
+
+      </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .divisions-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+      `}</style>
+    </section>
+    <div style={{ fontFamily: 'Montserrat, sans-serif', lineHeight: 1.1, textAlign: 'center' }}>
+      <div style={{
+        color: '#1B2E5E',
+        fontWeight: 900,
+        fontSize: '38px',
+        letterSpacing: '0.38em',
+        textTransform: 'uppercase',
+      }}>
+        — METRO —
+      </div>
+      <div style={{
+        fontWeight: 900,
+        fontSize: '48px',
+        letterSpacing: '0.32em',
+        textTransform: 'uppercase',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <span style={{ color: '#1B2E5E' }}>ELEV</span>
+        <span style={{ color: '#C8102E' }}>A</span>
+        <span style={{ color: '#1B2E5E' }}>TOR</span>
+      </div>
+    </div>
+    <footer style={{ background: '#F5F5F5', padding: '60px 24px 30px' }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+
+        {/* Large Logo */}
+
+        {/* Links */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '12px',
+          marginBottom: '28px',
+        }}>
+          <a
+            href="/contact-us"
+            style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 600,
+              fontSize: '14px',
+              color: '#1B2E5E',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+            }}
+          >
+            CONTACT US
+          </a>
+          <span style={{ color: '#1B2E5E', fontWeight: 300, fontSize: '18px' }}>|</span>
+          <a
+            href="/careers"
+            style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 600,
+              fontSize: '14px',
+              color: '#1B2E5E',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+            }}
+          >
+            CAREERS
+          </a>
+        </div>
+
+
+        {/* Divider */}
+        <div style={{ height: '1px', background: '#dddddd', marginBottom: '20px' }} />
+
+        {/* Copyright */}
+        <p style={{
+          fontFamily: 'Open Sans, sans-serif',
+          fontSize: '13px',
+          color: '#888888',
+        }}>
+          © 2025 Metro Elevator. All Rights Reserved.{' '}
+          <a href="/terms-of-use" style={{ color: '#888888', textDecoration: 'none' }}>Terms of Use</a>
+          {' '}|{' '}
+          <a href="/privacy-policy" style={{ color: '#888888', textDecoration: 'none' }}>Privacy Policy</a>
+        </p>
+      </div>
+    </footer>
     </div>
   );
 };
