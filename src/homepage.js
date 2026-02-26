@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import './HomePage.css';
-import TestimonialSlider from './TestimonialSlider';
-import WinningTeams from './WinningTeam';
 import { useEffect } from 'react';
 import {
   FiAlertTriangle, FiTarget, FiBarChart2,
-  FiCheckCircle, FiStar,
-  FiX
+  FiCheckCircle,
 } from 'react-icons/fi';
 
 
@@ -14,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 
 const clinchLogoFull = "https://static.wixstatic.com/media/b3f9bc_9064d42793e349b2852edee5defdb48a~mv2.png/v1/fill/w_450,h_114,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Metro%20Elevator%20Logo_white.png";
 const heroBgOrb = "https://clinchit.io/images/UeN8DRPyDg7p.png";
-const howItWorksBg = "https://clinchit.io/images/how_it_works.svg";
 
 
 const featuresData = {
@@ -129,14 +125,8 @@ const divisions = [
 
 
 const HomePage = () => {
-  const [activeTab, setActiveTab] = useState('research');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // For mobile menu
-  const activeFeature = featuresData[activeTab];
-  const navigate = useNavigate();
-  const handleClick = () => {
+  const [ setActiveTab] = useState('research');
 
-
-  }
 
   useEffect(() => {
     if (window.SN_CSM_EC) return; // already loaded
